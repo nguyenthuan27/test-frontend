@@ -1,27 +1,54 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../style/task.css";
-const TaskDetail = () => {
+import { useDispatch } from "react-redux";
+import { addNewTask, updateTask } from "../store/tasks";
+import { v4 as newId } from "uuid";
+const TaskDetail = (props) => {
+  const { task } = props;
+  const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [date, setDate] = useState(new Date().toLocaleDateString("en-CA"));
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("normal");
-  const addNewTask = (event) => {
-    event.preventDefault();
+  const add = () => {
+    if (!name) return alert("Please add task name");
     const newTask = {
+      id: newId(),
+      name: name,
+      description: description,
+      date: date,
+      priority: priority,
+      status: false,
+    };
+    dispatch(addNewTask(newTask));
+    alert("Add new task success");
+  };
+  const update = () => {
+    const taskDetail = {
+      id: task.id,
       name: name,
       description: description,
       date: date,
       priority: priority,
     };
-    console.log(newTask);
+    dispatch(updateTask(taskDetail));
+    alert("Update task success");
   };
   const handleDate = (e) => {
     setDate(e.target.value);
   };
+  useEffect(() => {
+    if (task) {
+      setName(task.name);
+      setDate(task.date);
+      setDescription(task.description);
+      setPriority(task.priority);
+    }
+  }, [task]);
   return (
     <>
       <div className="task">
-        <form onSubmit={addNewTask}>
+        <div className="form">
           <input
             type="text"
             required
@@ -39,6 +66,7 @@ const TaskDetail = () => {
               id="description"
               cols="50"
               rows="6"
+              value={description}
               onChange={(e) => setDescription(e.target.value)}
             ></textarea>
           </div>
@@ -58,6 +86,7 @@ const TaskDetail = () => {
               <br />
               <select
                 name="priority"
+                value={priority}
                 defaultValue="normal"
                 onChange={(e) => setPriority(e.target.value)}
               >
@@ -67,10 +96,16 @@ const TaskDetail = () => {
               </select>
             </div>
           </div>
-          <button type="submit" className="btn-add">
-            Add
-          </button>
-        </form>
+          {task ? (
+            <button type="submit" className="btn-add" onClick={() => update()}>
+              Update
+            </button>
+          ) : (
+            <button type="submit" className="btn-add" onClick={() => add()}>
+              Add
+            </button>
+          )}
+        </div>
       </div>
     </>
   );

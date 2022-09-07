@@ -1,8 +1,103 @@
 .tasks {
-  padding: 20px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  height: 100%;
 }
-.list-task .title {
+.tasks .title {
   width: 100%;
   font-weight: bold;
   font-size: 20px;
+}
+.search {
+  display: flex;
+  justify-content: center;
+  padding: 0 30px;
+  width: 100%;
+}
+
+.tasks .list-task {
+  padding: 0 30px;
+  overflow-y: scroll;
+  width: 100%;
+  height: 60%;
+}
+.content-item {
+  width: 98%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  border: 1px solid #000;
+}
+.content-detail {
+  width: 98%;
+}
+.list-task .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #000;
+}
+.action-task {
+  display: flex;
+  align-items: center;
+  width: 30%;
+}
+.task-name {
+  padding-left: 10px;
+  width: 25%;
+  display: flex;
+  align-items: center;
+}
+.task-name .check-box {
+  width: 20px;
+  padding-left: 10px;
+}
+.task-name span {
+  font-size: 20px;
+  padding-left: 10px;
+}
+.action-task button {
+  border: none;
+  padding: 10px 0;
+  width: 100px;
+  border-radius: 5px;
+}
+.red {
+  cursor: pointer;
+  margin: 0 10px;
+  font-weight: bold;
+  color: #fff;
+  background-color: rgb(230, 57, 57);
+}
+.aqua {
+  cursor: pointer;
+  font-weight: bold;
+  color: #fff;
+  background-color: rgb(33, 223, 223);
+}
+.gray {
+  cursor: not-allowed;
+  margin: 0 10px;
+  font-weight: bold;
+  color: #fff;
+  background-color: gray;
+}
+.bulk-action {
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: rgb(189, 189, 189);
+}
+.bulk-action .action button {
+  border: none;
+  padding: 10px 0;
+  width: 100px;
+  border-radius: 5px;
 }
