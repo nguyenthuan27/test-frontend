@@ -1,22 +1,15 @@
-import ListTask from "./component/ListTask";
-import TaskDetail from "./component/TaskDetail";
-import logo from "./logo.svg";
+import Layout from "./component/layout";
+import { Provider } from "react-redux";
+import store from "./store/store";
 import "./style/App.css";
+
 function App() {
   return (
-    <div className="App">
-      <div className="content">
-        <div className="create-task">
-          <div className="title d-flex align-items-center justify-content-center">
-            New Task
-          </div>
-          <TaskDetail />
-        </div>
-        <div className="list-task">
-          <ListTask />
-        </div>
+    <Provider store={store}>
+      <div className="App">
+        <Layout />
       </div>
-    </div>
+    </Provider>
   );
 }
 
