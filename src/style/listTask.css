@@ -101,3 +101,11 @@
   width: 100px;
   border-radius: 5px;
 }
+@media (max-width: 768px) {
+  .action-task {
+    width: 40%;
+  }
+  .action-task button {
+    width: 80px;
+  }
+}

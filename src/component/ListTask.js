@@ -32,7 +32,6 @@ const ListTask = () => {
     setCurrentTask(newData);
   };
   const remove = () => {
-    console.log("vao");
     dispatch(removeTaskByStatus());
   };
 
