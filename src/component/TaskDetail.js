@@ -21,6 +21,8 @@ const TaskDetail = (props) => {
       status: false,
     };
     dispatch(addNewTask(newTask));
+    setName("");
+    setDescription("");
     alert("Add new task success");
   };
   const update = () => {
